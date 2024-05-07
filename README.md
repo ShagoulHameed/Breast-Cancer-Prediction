@@ -1,27 +1,31 @@
 # Breast Cancer Detection App
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/a72718d9-c93e-4ab8-a038-83d666a4d82c)
 
 ## Home
+
 
 This app classifies breast cancer tumors as benign or malignant.
 
 ### Breast Cancer: An Overview
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/fed1e8ea-71c5-4f88-906d-ed023c656f10)
 
-Breast cancer is a type of cancer that develops in the breast tissue. It is the most common cancer among women worldwide and can also affect men, although it is less common. Breast cancer usually begins in the cells of the milk-producing ducts (ductal carcinoma) or the lobules (lobular carcinoma) of the breast. From there, it can spread to other parts of the body if not detected and treated early.
 
 ### Benign vs. Malignant Tumors
 
-- **Benign tumors**: Non-cancerous growths that do not spread to other parts of the body. While they may grow in size and cause health issues if they press on nearby organs or tissues, they do not invade surrounding tissue or metastasize (spread) to other parts of the body.
-- **Malignant tumors**: Cancerous growths that have the potential to invade surrounding tissues and spread to other parts of the body through the bloodstream or lymphatic system. Malignant tumors can be life-threatening if left untreated and require prompt medical attention.
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/f56b1c61-2588-44ea-a522-d105ddd3ce4b)
+
 
 ### Classification of Breast Cancer Tumors
 
-In the context of breast cancer, tumors are classified as either benign or malignant based on their characteristics and behavior. This classification is crucial for determining the appropriate treatment approach and prognosis for the patient. Diagnostic tests such as biopsies, imaging studies (e.g., mammograms), and laboratory tests help healthcare providers differentiate between benign and malignant breast tumors.
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/ea1c1110-ba63-4d08-856d-774bee0f896c)
+
 
 ## Exploratory Data Analysis
 
 ### Exploratory Data Analysis
 
 Let's explore the dataset.
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/bfffb5ac-d442-4d11-98f7-e9dd11959262)
 
 #### Dataset Summary
 ```
@@ -30,6 +34,8 @@ st.write(df_cancer.head())
 
 st.write(df_cancer.describe())
 ```
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/9d15fc66-f395-44d9-8888-dc05baca4ef2)
+
 #### Target Variable Distribution
 
 This section provides insights into the distribution of the target variable in the dataset. Understanding the distribution of the target variable is crucial as it helps in determining the class balance, which in turn affects the modeling approach and performance evaluation metrics.
@@ -38,6 +44,7 @@ This section provides insights into the distribution of the target variable in t
 st.write("Target Variable Distribution:")
 st.write(df_cancer['label'].value_counts())
 ```
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/b8901c36-415f-4e8f-8805-4dd462ab1cef)
 
 #### Correlation Heatmap
 The correlation heatmap visualizes the pairwise correlations between the features in the dataset. It helps in identifying patterns and relationships between variables. This information is valuable for feature selection, identifying multicollinearity, and understanding how features influence the target variable.
@@ -48,6 +55,7 @@ fig, ax = plt.subplots(figsize=(10, 8))
 sns.heatmap(df_cancer.corr(), annot=True, cmap='coolwarm', fmt='.2f', ax=ax)
 st.pyplot(fig)
 ```
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/bed4fc7b-1882-49da-bff7-eb631b52aca4)
 
 #### Model Building
 
@@ -71,6 +79,7 @@ elif model_selection == "Support Vector Machine (SVM)":
     st.write("Building Support Vector Machine (SVM) model...")
     model = SVC()
 ```
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/550e85db-9a96-4d22-8cd5-56f89bdf2bef)
 
 #### Model Selection
 Model evaluation assesses the performance of the trained model on unseen data. It typically involves calculating various metrics such as accuracy, precision, recall, F1-score, and ROC-AUC to measure how well the model generalizes to new data.
@@ -92,6 +101,7 @@ st.write("Classification Report:")
 classification_report_df = pd.DataFrame(classification_report(y_test, y_pred_test, output_dict=True))
 st.write(classification_report_df)
 ```
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/76428c28-4db3-463d-bccc-dede7f84f042)
 
 #### Confusion Matrix
 
@@ -103,6 +113,7 @@ fig, ax = plt.subplots(figsize=(8, 6))
 sns.heatmap(confusion, annot=True, fmt="d", cmap="Blues", ax=ax)
 st.pyplot(fig)
 ```
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/7919a7c0-a295-4c50-b85c-67690ba3884d)
 
 ####  Sample Input Data for Prediction
 
@@ -112,3 +123,6 @@ This section allows users to input their own data into the model for prediction.
 st.subheader("Sample Input Data for Prediction (Optional)")
 input_data_str = st.text_input("Enter comma-separated values
 ```
+![image](https://github.com/ShagoulHameed/Breast-Cancer-Prediction/assets/154894802/90f06c71-5ca1-451e-8966-2be1afae6f05)
+
+[LInkedIN](https://www.linkedin.com/in/shagoul-hameed/) 
