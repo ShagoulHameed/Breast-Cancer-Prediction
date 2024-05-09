@@ -5,6 +5,7 @@ from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
+from sklearn.ensemble import VotingClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -94,7 +95,7 @@ def main():
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=20)
 
         
-        model_selection = st.selectbox("Select Model", ("Logistic Regression", "Support Vector Machine (SVM)"))
+        model_selection = st.selectbox("Select Model", ("Logistic Regression", "Support Vector Machine (SVM)", "Voting Classifier"))
 
         if model_selection == "Logistic Regression":
             #  Logistic Regression model
@@ -111,6 +112,16 @@ def main():
             model.fit(X_train, y_train)
             y_pred_train = model.predict(X_train)
             y_pred_test = model.predict(X_test)
+        elif  model_selection ==   "Voting Classifier":
+            # Voting Classifier model
+            st.write("Building Voting Classifier model...")
+            log_reg = LogisticRegression()
+            svm = SVC()
+            model = VotingClassifier(estimators=[('lr', log_reg), ('svm', svm)], voting='hard')
+            model.fit(X_train, y_train)
+            y_pred_train = model.predict(X_train)
+            y_pred_test = model.predict(X_test)
+
 
         
         st.write(f"Evaluating {model_selection} model...")
@@ -124,10 +135,10 @@ def main():
         classification_report_df = pd.DataFrame(classification_report(y_test, y_pred_test, output_dict=True))
         st.write(classification_report_df)
 
-        #  confusion matrix
+        
         cm = confusion_matrix(y_test, y_pred_test)
 
-        # Create DataFrame for confusion matrix
+        
         confusion = pd.DataFrame(cm, index=['is_cancer', 'is_healthy'],
                                 columns=['predicted_cancer', 'predicted_healthy'])
 
@@ -137,7 +148,7 @@ def main():
         sns.heatmap(confusion, annot=True, fmt="d", cmap="Blues", ax=ax)
         st.pyplot(fig)
 
-        # Sample input data 
+        
         st.subheader("Sample Input Data for Prediction (Optional)")
         input_data_str = st.text_input("Enter comma-separated values for the input data (optional)")
         if input_data_str:
